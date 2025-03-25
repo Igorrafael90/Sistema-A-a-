@@ -1,26 +1,43 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@theme {
+  --shadow-Page: -9px 10px 2px  #93D666;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(180deg, #A966D6 47%, #1C125B 100%);
+  background-attachment: fixed;
+  background-size: cover;
+  height: 100vh;
+}
+
+.CircleLR {
+  background-color: #88D752;
+  border-radius: 3px;
+  width: 35%;
+}
+
+.CircleMIS {
+  background-color: #88D752;
+}
+
+.scala {
+  animation: scala 1.7s ease-in-out;
+}
+
+.scalaReverse {
+  animation: scalaReverse 1.7s ease-in-out;
+}
+
+@keyframes scala {
+  0% { transform: scale(0); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+
+@keyframes scalaReverse {
+  0% { transform: scale(0); }
+  50% { transform: scale(0.98); }
+  100% { transform: scale(1); }
 }
