@@ -1,4 +1,4 @@
-import { Cadastrado } from "./interface";
+import { Cadastrado, Description, PedidoFeito } from "./interface";
 
 export const RegisterUser = (
     User: string,
@@ -37,4 +37,34 @@ export const RegisterUser = (
     }
     alert('usuario cadastrado')
     return novoUsuario
+}
+
+export const RequestProduct = (
+    e: React.FormEvent,
+    Order: string,
+    Local: string,
+    NameCl: string,
+    setPedidosFeitos: React.Dispatch<React.SetStateAction<PedidoFeito[]>>,
+    setOrder: React.Dispatch<React.SetStateAction<string>>,
+    setLocal: React.Dispatch<React.SetStateAction<string>>,
+    setNameCl: React.Dispatch<React.SetStateAction<string>>
+) => {
+    e.preventDefault()
+
+    const itemSelecionado = Description.find(item => item.nome === Order)
+
+    if(itemSelecionado){
+        const novoPedido: PedidoFeito = {
+            pedido: Order,
+            endereco: Local,
+            cliente: NameCl,
+            preco: itemSelecionado.preço
+        }
+
+        setPedidosFeitos(prev => [...prev, novoPedido])
+        
+        setOrder('')
+        setLocal('')
+        setNameCl('')
+    }
 }

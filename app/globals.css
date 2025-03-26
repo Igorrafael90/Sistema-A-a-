@@ -2,15 +2,19 @@
 
 @theme {
   --shadow-Page: -9px 10px 2px  #93D666;
+  --shadow-Page2: -8px 9px 4px  #B09F9F;
 }
 
 body {
-  background: linear-gradient(180deg, #A966D6 47%, #1C125B 100%);
+  background: linear-gradient(180deg, #ffffff 47%, #DBDBDB 100%);
   background-attachment: fixed;
   background-size: cover;
   height: 100vh;
 }
 
+.shadow-text{
+  text-shadow: 4px 4px 10px #000000;
+}
 .CircleLR {
   background-color: #88D752;
   border-radius: 3px;

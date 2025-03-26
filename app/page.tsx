@@ -12,7 +12,6 @@ export default function Home() {
   const [Senha, setSenha] = useState('')
   const [Userconf, setUserconf] = useState('')
   const [Senhaconf, setSenhaconf] = useState('')
-  const [Cadastro, setCadastro] = useState<Cadastrado[]>([])
 
   return (
     <>
@@ -21,10 +20,10 @@ export default function Home() {
       </header>
       <main className="w-full h-full flex flex-col items-center justify-center">
         <div className="w-60 flex justify-between mb-3">
-          <button onClick={() => setMode(true)} className={` text-white hover:bg-[#88D752] rounded-[3px] w-[35%]  ${Mode == true ? 'CircleLR' : ''}`}>LOGIN</button>
-          <button onClick={() => setMode(false)} className={` text-white hover:bg-[#88D752] rounded-[3px] w-[35%] ${Mode == true ? '' : 'CircleLR'}`}>CADASTRO</button>
+          <button onClick={() => setMode(true)} className={` text-white hover:bg-[#88D752] rounded-[3px] w-[35%]  ${Mode == true ? 'CircleLR' : ''}`}><span className="shadow-text">LOGIN</span></button>
+          <button onClick={() => setMode(false)} className={` text-white hover:bg-[#88D752] rounded-[3px] w-[35%] ${Mode == true ? '' : 'CircleLR'}`}><span className="shadow-text">CADASTRO</span></button>
         </div>
-        <div className={`shadow-Page bg-[#FFFFFF] text-black rounded-[8px] w-60 h-96 ${Mode == true ? 'max-h-64 scalaReverse' : 'scala'}`}>
+        <div className={`shadow-Page border-black border-[1px] bg-[#FFFFFF] text-black rounded-[8px] w-60 h-96 ${Mode == true ? 'max-h-64 scalaReverse' : 'scala'}`}>
           {Mode == true ?(
             <form className="flex flex-col w-full h-full mt-4 ml-5" action="">
               <label className="block mb-2">Usuario</label>
@@ -47,6 +46,7 @@ export default function Home() {
             </form>
           )}
         </div>
+        <Link href={`/Requests/`}>a</Link>
       </main>
     </>
   );
