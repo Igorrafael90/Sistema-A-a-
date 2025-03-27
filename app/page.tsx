@@ -1,9 +1,8 @@
 'use client'
 
 import Image from "next/image";
-import { RegisterUser } from "@/utils/function";
+import { RegisterUser, Theme } from "@/utils/function";
 import { useState } from "react";
-import { Cadastrado } from "@/utils/interface";
 import Link from "next/link";
 
 export default function Home() {
@@ -12,13 +11,17 @@ export default function Home() {
   const [Senha, setSenha] = useState('')
   const [Userconf, setUserconf] = useState('')
   const [Senhaconf, setSenhaconf] = useState('')
+  const [theme, settheme] = useState<"light" | "dark">("light")
+
 
   return (
     <>
-      <header className="w-full bg-[#88D752]">
+      <header className="flex justify-between w-full bg-[#88D752] ">
+        <p></p>
         <h1 className="text-2xl text-center text-white">FAÇA FICHA</h1>
+        <button onClick={(e) => Theme(settheme)}>a</button>
       </header>
-      <main className="w-full h-full flex flex-col items-center justify-center">
+      <main className="dark:bg-black w-full h-full flex flex-col items-center justify-center">
         <div className="w-60 flex justify-between mb-3">
           <button onClick={() => setMode(true)} className={` text-white hover:bg-[#88D752] rounded-[3px] w-[35%]  ${Mode == true ? 'CircleLR' : ''}`}><span className="shadow-text">LOGIN</span></button>
           <button onClick={() => setMode(false)} className={` text-white hover:bg-[#88D752] rounded-[3px] w-[35%] ${Mode == true ? '' : 'CircleLR'}`}><span className="shadow-text">CADASTRO</span></button>

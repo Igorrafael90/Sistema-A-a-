@@ -15,9 +15,8 @@ export default function Requests() {
                 <h1 className="text-2xl text-center text-white">FAÇA FICHA</h1>
             </header>
             <main className="w-full h-full flex flex-col items-center">
-                
                     <h1 className="shadow-text text-white text-4xl">PEDIDOS</h1>
-                    <div className="shadow-Page border-black border-[1px] bg-[#FFFFFF] text-black rounded-[8px] w-[30%] h-76 mb-5">
+                    <div className="scala shadow-Page border-black border-[1px] bg-[#FFFFFF] text-black rounded-[8px] w-[30%] h-76 mb-5">
                         <form className="flex flex-col w-full h-full mt-4 ml-5" onSubmit={(e) => RequestProduct(e,Order,Local,NameCl,setPedidosFeitos,setOrder,setLocal,setNameCl)}>
                             <label className="block mb-1">Pedido</label>
                             <input className="w-[85%] h-8 rounded-[3px] bg-[#EFEDED] mb-5" value={Order} onChange={(e) => setOrder(e.target.value)} list="Pedidos" />
@@ -30,7 +29,7 @@ export default function Requests() {
                             <input className="w-[85%] h-8 rounded-[3px] bg-[#EFEDED] mb-5" value={Local} onChange={(e) => setLocal(e.target.value)} />
                             <label className="block mb-1">Cliente</label>
                             <input className="w-[85%] h-8 rounded-[3px] bg-[#EFEDED] mb-5" value={NameCl} onChange={(e) => setNameCl(e.target.value)} />
-                            <button className="bg-[#88D752] text-white w-26 rounded-[3px] mx-19">Pedir</button>
+                            <button className="bg-[#88D752] text-white w-26 rounded-[3px] mx-15">Pedir</button>
                         </form>
                     </div>
 

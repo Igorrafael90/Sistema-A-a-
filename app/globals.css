@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --shadow-Page: -9px 10px 2px  #93D666;
   --shadow-Page2: -8px 9px 4px  #B09F9F;
