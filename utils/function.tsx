@@ -10,7 +10,7 @@ export const RegisterUser = (
         alert('Preencha todos os campos');
         return null;
     }
-
+    
     if (User !== Userconf) {
         alert("Emails não coincidem");
         return null;
@@ -53,7 +53,7 @@ export const RequestProduct = (
 
     const itemSelecionado = Description.find(item => item.nome === Order)
 
-    if (itemSelecionado) {
+    if(itemSelecionado){
         const novoPedido: PedidoFeito = {
             pedido: Order,
             endereco: Local,
@@ -62,7 +62,7 @@ export const RequestProduct = (
         }
 
         setPedidosFeitos(prev => [...prev, novoPedido])
-
+        
         setOrder('')
         setLocal('')
         setNameCl('')
@@ -73,15 +73,14 @@ export const Theme = (
     settheme: React.Dispatch<React.SetStateAction<"light" | "dark">>
 ) => {
     const Dark = document.documentElement.classList.contains("dark");
-
+  
     if (Dark) {
-        document.documentElement.classList.remove("dark");
-        localStorage.setItem("theme", "light");
-        settheme("light");
+      document.documentElement.classList.remove("dark");
+      settheme("light");
     } else {
-        document.documentElement.classList.add("dark");
-        localStorage.setItem("theme", "dark");
-        settheme("dark");
+      document.documentElement.classList.add("dark");
+      settheme("dark");
     }
-};
-
+  };
+  
+  
