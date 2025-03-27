@@ -17,7 +17,7 @@ export default function Estoque() {
                 <h1 className="text-2xl text-center text-white">FAÇA FICHA</h1>
                 <button onClick={(e) => Theme(settheme)}>a</button>
             </header>
-            <main className="dark:bg-linear-to-bl from-[#000000] to-[#474747] w-full h-full flex flex-col items-center">
+            <main className="dark:bg-linear-to-bl from-[#000000] to-[#474747] w-full h-auto min-h-full flex flex-col items-center">
                 <h1 className="shadow-text text-white text-4xl mt-10">ESTOQUE</h1>
                 <div className="scala shadow-Page border-black border-[1px] bg-[#FFFFFF] text-black rounded-[8px] w-[30%] h-76 mb-5">
                     <form className="flex flex-col w-full h-full mt-4 ml-5" onSubmit={(e) =>{e.preventDefault(); InsertEstoque(Item, Gasto, Amount, setItem, setGasto, setAmount, setEstoquefeito)}}>
