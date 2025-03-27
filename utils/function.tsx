@@ -73,7 +73,7 @@ export const Theme = (
     settheme: React.Dispatch<React.SetStateAction<"light" | "dark">>
 ) => {
     const Dark = document.documentElement.classList.contains("dark");
-  
+
     if (Dark) {
       document.documentElement.classList.remove("dark");
       settheme("light");
