@@ -11,16 +11,22 @@ export interface ORDERS {
 }
 
 export interface PedidoFeito {
-    pedido: string;
-    endereco: string;
-    cliente: string;
-    preco: number;
+    pedido: string,
+    endereco: string,
+    cliente: string,
+    preco: number,
+}
+
+export interface PedidoEstoque {
+    item: string,
+    gasto: number,
+    amount: number,
 }
 
 export interface AcSo{
-    id: number;
-    nome: string;
-    preço: number;
+    id: number,
+    nome: string,
+    preço: number,
 }
 
 export const Description: AcSo[] = [

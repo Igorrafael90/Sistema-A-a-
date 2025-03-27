@@ -1,4 +1,4 @@
-import { Cadastrado, Description, PedidoFeito } from "./interface";
+import { Cadastrado, Description, PedidoEstoque, PedidoFeito } from "./interface";
 
 export const RegisterUser = (
     User: string,
@@ -10,7 +10,7 @@ export const RegisterUser = (
         alert('Preencha todos os campos');
         return null;
     }
-    
+
     if (User !== Userconf) {
         alert("Emails não coincidem");
         return null;
@@ -40,7 +40,6 @@ export const RegisterUser = (
 }
 
 export const RequestProduct = (
-    e: React.FormEvent,
     Order: string,
     Local: string,
     NameCl: string,
@@ -49,11 +48,10 @@ export const RequestProduct = (
     setLocal: React.Dispatch<React.SetStateAction<string>>,
     setNameCl: React.Dispatch<React.SetStateAction<string>>
 ) => {
-    e.preventDefault()
 
     const itemSelecionado = Description.find(item => item.nome === Order)
 
-    if(itemSelecionado){
+    if (itemSelecionado) {
         const novoPedido: PedidoFeito = {
             pedido: Order,
             endereco: Local,
@@ -62,7 +60,7 @@ export const RequestProduct = (
         }
 
         setPedidosFeitos(prev => [...prev, novoPedido])
-        
+
         setOrder('')
         setLocal('')
         setNameCl('')
@@ -75,12 +73,36 @@ export const Theme = (
     const Dark = document.documentElement.classList.contains("dark");
 
     if (Dark) {
-      document.documentElement.classList.remove("dark");
-      settheme("light");
+        document.documentElement.classList.remove("dark");
+        localStorage.setItem("theme", "light");
+        settheme("light");
     } else {
-      document.documentElement.classList.add("dark");
-      settheme("dark");
+        document.documentElement.classList.add("dark");
+        localStorage.setItem("theme", "dark");
+        settheme("dark");
     }
-  };
-  
-  
+};
+
+export const InsertEstoque = (
+    Item: string,
+    Gasto: number,
+    Amount: number,
+    setItem: React.Dispatch<React.SetStateAction<string>>,
+    setGasto: React.Dispatch<React.SetStateAction<number>>,
+    setAmount: React.Dispatch<React.SetStateAction<number>>,
+    setEstoquefeito: React.Dispatch<React.SetStateAction<PedidoEstoque[]>>
+) => {
+    
+    const novopedidoestoque: PedidoEstoque ={
+        item: Item,
+        gasto: Gasto,
+        amount: Amount,
+    }
+    
+    setEstoquefeito(prev => [...prev, novopedidoestoque])
+
+    setItem('')
+    setGasto(0)
+    setAmount(0)
+}
+

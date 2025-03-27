@@ -20,7 +20,7 @@ export default function Requests() {
             <main className="dark:bg-linear-to-bl from-[#000000] to-[#474747] w-full h-full flex flex-col items-center">
                 <h1 className="shadow-text text-white text-4xl mt-10">PEDIDOS</h1>
                 <div className="scala shadow-Page border-black border-[1px] bg-[#FFFFFF] text-black rounded-[8px] w-[30%] h-76 mb-5">
-                    <form className="flex flex-col w-full h-full mt-4 ml-5" onSubmit={(e) => RequestProduct(e, Order, Local, NameCl, setPedidosFeitos, setOrder, setLocal, setNameCl)}>
+                    <form className="flex flex-col w-full h-full mt-4 ml-5" onSubmit={(e) =>{e.preventDefault(); RequestProduct(Order, Local, NameCl, setPedidosFeitos, setOrder, setLocal, setNameCl)}}>
                         <label className="block mb-1">Pedido</label>
                         <input className="w-[85%] h-8 rounded-[3px] bg-[#EFEDED] mb-5" value={Order} onChange={(e) => setOrder(e.target.value)} list="Pedidos" />
                         <datalist id="Pedidos">
@@ -32,16 +32,16 @@ export default function Requests() {
                         <input className="w-[85%] h-8 rounded-[3px] bg-[#EFEDED] mb-5" value={Local} onChange={(e) => setLocal(e.target.value)} />
                         <label className="block mb-1">Cliente</label>
                         <input className="w-[85%] h-8 rounded-[3px] bg-[#EFEDED] mb-5" value={NameCl} onChange={(e) => setNameCl(e.target.value)} />
-                        <button className="bg-[#88D752] text-white w-26 rounded-[3px] mx-15">Pedir</button>
+                        <button className="bg-[#88D752] text-white w-26 rounded-[3px] mx-auto">Pedir</button>
                     </form>
                 </div>
 
-                <div className="bg-white w-[90%] border-black border h-auto rounded-lg shadow-Page grid grid-cols-3 p-3">
+                <div className="scala bg-white w-[90%] border-black border h-auto rounded-lg shadow-Page grid grid-cols-3 p-3">
                     {PedidosFeitos.length == 0 ? (
                         <p>Sem pedidos</p>
                     ) : (
                         PedidosFeitos.map((pedido, index) => (
-                            <div key={index} className="bg-[#444444] text-white w-64 h-64 rounded-lg flex flex-col p-2 mb-5 shadow-Page2 transition ease-out hover:scale-100 hover:-translate-y-1 duration-200">
+                            <div key={index} className="scala bg-[#444444] text-white w-64 h-64 rounded-lg flex flex-col p-2 mb-5 shadow-Page2 transition ease-out hover:scale-100 hover:-translate-y-1 duration-200">
                                 <h1 className="text-xl">Pedido</h1>
                                 <p>{pedido.pedido}</p>
                                 <h1 className="text-xl">Preço</h1>

@@ -50,6 +50,7 @@ export default function Home() {
           )}
         </div>
         <Link href={`/Requests/`}>a</Link>
+        <Link href={`/Estoque/`}>a</Link>
       </main>
     </>
   );
