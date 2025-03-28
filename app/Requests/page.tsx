@@ -2,7 +2,7 @@
 import { useState } from "react"
 import { Description, PedidoFeito } from "@/utils/interface"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSun, faMoon } from "@fortawesome/free-regular-svg-icons";
+import { faSun, faMoon, faCheckCircle, faXmarkCircle  } from "@fortawesome/free-regular-svg-icons";
 import { RequestProduct, Theme } from "@/utils/function"
 import Link from "next/link"
 
@@ -16,16 +16,16 @@ export default function Requests() {
     return (
         <>
             <nav className="flex items-center justify-between w-full bg-[#88D752] ">
-                <button onClick={(e) => Theme(settheme)}>
-                    <FontAwesomeIcon className="text-white" icon={theme === "light" ? faMoon : faSun} />
+                <button className="cursor-pointer" onClick={(e) => Theme(settheme)}>
+                    <FontAwesomeIcon className="text-white text-2xl" icon={theme === "light" ? faMoon : faSun} />
                 </button>
                 <h1 className="text-2xl ml-24 text-white">AÇAÍ</h1>
                 <div className="flex space-x-1">
                     <Link className="" href={'/Estoque/'}>
-                        <button className="bg-[#A966D6] text-white w-16 rounded-[3px]">Estoque</button>
+                        <button className="bg-[#A966D6] text-white w-16 rounded-[3px] cursor-pointer hover:bg-[#8a53ae]">Estoque</button>
                     </Link>
                     <Link className="" href={'/Lucro/'}>
-                        <button className="bg-[#A966D6] text-white w-16 rounded-[3px]">Lucros</button>
+                        <button className="bg-[#A966D6] text-white w-16 rounded-[3px] cursor-pointer hover:bg-[#8a53ae]">Lucros</button>
                     </Link>
                 </div>
             </nav>
@@ -44,11 +44,11 @@ export default function Requests() {
                         <input className="w-[85%] h-8 rounded-[3px] bg-[#EFEDED] mb-5" value={Local} onChange={(e) => setLocal(e.target.value)} />
                         <label className="block mb-1">Cliente</label>
                         <input className="w-[85%] h-8 rounded-[3px] bg-[#EFEDED] mb-5" value={NameCl} onChange={(e) => setNameCl(e.target.value)} />
-                        <button className="bg-[#88D752] text-white w-26 rounded-[3px] mx-auto">Pedir</button>
+                        <button className="cursor-pointer bg-[#88D752] text-white w-26 rounded-[3px] mx-auto hover:bg-[#5f963b]">Pedir</button>
                     </form>
                 </div>
 
-                <div className="scala bg-white w-[90%] border-black border h-auto rounded-lg shadow-Page grid grid-cols-3 p-3">
+                <div className="scala bg-white w-[90%] border-black border h-auto rounded-lg shadow-Page grid grid-cols-4 p-3">
                     {PedidosFeitos.length == 0 ? (
                         <p>Sem pedidos</p>
                     ) : (
@@ -62,6 +62,14 @@ export default function Requests() {
                                 <p>{pedido.cliente}</p>
                                 <h1 className="text-xl">Endereço</h1>
                                 <p >{pedido.endereco}</p>
+                                <div className="w-full flex justify-between mt-2">
+                                    <button className="cursor-pointer">
+                                        <FontAwesomeIcon className="text-2xl text-green-500 hover:text-green-700" icon={faCheckCircle}></FontAwesomeIcon>
+                                    </button>
+                                    <button className="cursor-pointer">
+                                        <FontAwesomeIcon className="text-2xl text-red-500 hover:text-red-700" icon={faXmarkCircle}></FontAwesomeIcon>
+                                    </button>
+                                </div>
                             </div>
                         ))
                     )}

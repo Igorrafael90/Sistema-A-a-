@@ -12,16 +12,16 @@ export default function Lucro() {
     return (
         <>
             <nav className="flex items-center justify-between w-full bg-[#88D752] ">
-                <button onClick={(e) => Theme(settheme)}>
-                    <FontAwesomeIcon className="text-white" icon={theme === "light" ? faMoon : faSun} />
+                <button className="cursor-pointer" onClick={(e) => Theme(settheme)}>
+                    <FontAwesomeIcon className="text-white text-2xl" icon={theme === "light" ? faMoon : faSun} />
                 </button>
                 <h1 className="text-2xl ml-24 text-white">AÇAÍ</h1>
                 <div className="flex space-x-1">
                     <Link className="" href={'/Estoque/'}>
-                        <button className="bg-[#A966D6] text-white w-16 rounded-[3px]">Estoque</button>
+                        <button className="bg-[#A966D6] text-white w-16 rounded-[3px] cursor-pointer hover:bg-[#8a53ae]">Estoque</button>
                     </Link>
                     <Link className="" href={'/Requests/'}>
-                        <button className="bg-[#A966D6] text-white w-16 rounded-[3px]">Pedidos</button>
+                        <button className="bg-[#A966D6] text-white w-16 rounded-[3px] cursor-pointer hover:bg-[#8a53ae]">Pedidos</button>
                     </Link>
                 </div>
             </nav>

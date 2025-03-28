@@ -3,7 +3,7 @@
 import { InsertEstoque, Theme } from "@/utils/function"
 import { PedidoEstoque } from "@/utils/interface"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSun, faMoon } from "@fortawesome/free-regular-svg-icons";
+import { faSun, faMoon, faCheckCircle, faXmarkCircle, faPenToSquare } from "@fortawesome/free-regular-svg-icons";
 import Link from "next/link"
 import { useState } from "react"
 
@@ -16,16 +16,16 @@ export default function Estoque() {
     return (
         <>
             <nav className="flex items-center justify-between w-full bg-[#88D752] ">
-                <button onClick={(e) => Theme(settheme)}>
-                    <FontAwesomeIcon className="text-white" icon={theme === "light" ? faMoon : faSun} />
+                <button className="cursor-pointer" onClick={(e) => Theme(settheme)}>
+                    <FontAwesomeIcon className="text-white text-2xl" icon={theme === "light" ? faMoon : faSun} />
                 </button>
                 <h1 className="text-2xl ml-24 text-white">AÇAÍ</h1>
                 <div className="flex space-x-1">
                     <Link className="" href={'/Requests/'}>
-                        <button className="bg-[#A966D6] text-white w-16 rounded-[3px]">Estoque</button>
+                        <button className="bg-[#A966D6] text-white w-16 rounded-[3px] cursor-pointer hover:bg-[#8a53ae]">Estoque</button>
                     </Link>
                     <Link className="" href={'/Lucro/'}>
-                        <button className="bg-[#A966D6] text-white w-16 rounded-[3px]">Lucros</button>
+                        <button className="bg-[#A966D6] text-white w-16 rounded-[3px] cursor-pointer hover:bg-[#8a53ae]">Lucros</button>
                     </Link>
                 </div>
             </nav>
@@ -39,10 +39,10 @@ export default function Estoque() {
                         <input type="number" step="0.01" className="w-[85%] h-8 rounded-[3px] bg-[#EFEDED] mb-5" value={Gasto} onChange={(e) => setGasto(Number(e.target.value))} />
                         <label className="block mb-1">Quantidade</label>
                         <input className="w-[85%] h-8 rounded-[3px] bg-[#EFEDED] mb-5" value={Amount} onChange={(e) => setAmount(Number(e.target.value))} />
-                        <button className="bg-[#88D752] mx-auto text-white w-26 rounded-[3px]">Pedir</button>
+                        <button className="cursor-pointer bg-[#88D752] mx-auto text-white w-26 rounded-[3px] hover:bg-[#5f963b]">Pedir</button>
                     </form>
                 </div>
-                <div className="scala bg-white w-[90%] border-black border h-auto rounded-lg shadow-Page grid grid-cols-3 p-3">
+                <div className="scala bg-white w-[90%] border-black border h-auto rounded-lg shadow-Page grid grid-cols-4 p-3">
                     {Estoquefeito.length == 0 ? (
                         <p>Sem pedidos</p>
                     ) : (
@@ -54,6 +54,11 @@ export default function Estoque() {
                                 <p>{guardado.gasto}</p>
                                 <h1 className="text-xl">Quantidade</h1>
                                 <p>{guardado.amount}</p>
+                                <div className="w-full flex justify-between mt-2">
+                                    <button className="cursor-pointer">
+                                        <FontAwesomeIcon className="text-2xl text-yellow-500 mt-15 hover:text-yellow-700" icon={faPenToSquare}></FontAwesomeIcon>
+                                    </button>
+                                </div>
                             </div>
                         ))
                     )}
