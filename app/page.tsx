@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { RegisterUser, Theme } from "@/utils/function";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSun, faMoon } from "@fortawesome/free-regular-svg-icons";
 import Link from "next/link";
 
 export default function Home() {
@@ -16,11 +18,13 @@ export default function Home() {
 
   return (
     <>
-      <header className="flex justify-between w-full bg-[#88D752] ">
-        <p></p>
+      <nav className="flex justify-between w-full bg-[#88D752] ">
+        <button onClick={(e) => Theme(settheme)}>
+          <FontAwesomeIcon className="text-white" icon={theme === "light" ? faMoon : faSun} />
+        </button>
         <h1 className="text-2xl text-center text-white">FAÇA FICHA</h1>
-        <button onClick={(e) => Theme(settheme)}>a</button>
-      </header>
+        <p></p>
+      </nav>
       <main className="dark:bg-linear-to-bl  from-[#000000] to-[#474747] from w-full h-auto min-h-full flex flex-col items-center justify-center">
         <div className="w-60 flex justify-between mb-3">
           <button onClick={() => setMode(true)} className={` text-white hover:bg-[#88D752] rounded-[3px] w-[35%]  ${Mode == true ? 'CircleLR' : ''}`}><span className="shadow-text">LOGIN</span></button>

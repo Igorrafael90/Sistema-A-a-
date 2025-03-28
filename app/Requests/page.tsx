@@ -1,7 +1,10 @@
 'use client'
 import { useState } from "react"
-import { AcSo, Description, PedidoFeito } from "@/utils/interface"
+import { Description, PedidoFeito } from "@/utils/interface"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSun, faMoon } from "@fortawesome/free-regular-svg-icons";
 import { RequestProduct, Theme } from "@/utils/function"
+import Link from "next/link"
 
 export default function Requests() {
     const [Order, setOrder] = useState('')
@@ -12,15 +15,24 @@ export default function Requests() {
 
     return (
         <>
-            <header className="flex justify-between w-full bg-[#88D752] ">
-                <p></p>
-                <h1 className="text-2xl text-center text-white">FAÇA FICHA</h1>
-                <button onClick={(e) => Theme(settheme)}>a</button>
-            </header>
+            <nav className="flex items-center justify-between w-full bg-[#88D752] ">
+                <button onClick={(e) => Theme(settheme)}>
+                    <FontAwesomeIcon className="text-white" icon={theme === "light" ? faMoon : faSun} />
+                </button>
+                <h1 className="text-2xl ml-24 text-white">AÇAÍ</h1>
+                <div className="flex space-x-1">
+                    <Link className="" href={'/Estoque/'}>
+                        <button className="bg-[#A966D6] text-white w-16 rounded-[3px]">Estoque</button>
+                    </Link>
+                    <Link className="" href={'/Lucro/'}>
+                        <button className="bg-[#A966D6] text-white w-16 rounded-[3px]">Lucros</button>
+                    </Link>
+                </div>
+            </nav>
             <main className="dark:bg-linear-to-bl from-[#000000] to-[#474747] w-full h-auto min-h-full flex flex-col items-center">
                 <h1 className="shadow-text text-white text-4xl mt-10">PEDIDOS</h1>
                 <div className="scala shadow-Page border-black border-[1px] bg-[#FFFFFF] text-black rounded-[8px] w-[30%] h-76 mb-5">
-                    <form className="flex flex-col w-full h-full mt-4 ml-5" onSubmit={(e) =>{e.preventDefault(); RequestProduct(Order, Local, NameCl, setPedidosFeitos, setOrder, setLocal, setNameCl)}}>
+                    <form className="flex flex-col w-full h-full mt-4 ml-5" onSubmit={(e) => { e.preventDefault(); RequestProduct(Order, Local, NameCl, setPedidosFeitos, setOrder, setLocal, setNameCl) }}>
                         <label className="block mb-1">Pedido</label>
                         <input className="w-[85%] h-8 rounded-[3px] bg-[#EFEDED] mb-5" value={Order} onChange={(e) => setOrder(e.target.value)} list="Pedidos" />
                         <datalist id="Pedidos">
