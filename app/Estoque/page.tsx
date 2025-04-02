@@ -1,14 +1,16 @@
 'use client'
 
-import { InsertEstoque, Theme } from "@/utils/function"
+import { InsertEstoque, Theme, ATTPrice } from "@/utils/function"
 import { PedidoEstoque } from "@/utils/interface"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSun, faMoon, faCheckCircle, faXmarkCircle, faPenToSquare } from "@fortawesome/free-regular-svg-icons";
+import { faSun, faMoon, faPenToSquare } from "@fortawesome/free-regular-svg-icons";
 import Link from "next/link"
 import { useState } from "react"
 
 export default function Estoque() {
     const [Item, setItem] = useState('')
+    const [Mode, setMode] = useState(false)
+    const [Att, setAtt] = useState<number>(0)
     const [Gasto, setGasto] = useState<number>(0)
     const [Amount, setAmount] = useState<number>(0)
     const [Estoquefeito, setEstoquefeito] = useState<PedidoEstoque[]>([])
@@ -30,6 +32,18 @@ export default function Estoque() {
                 </div>
             </nav>
             <main className="dark:bg-linear-to-bl from-[#000000] to-[#474747] w-full h-auto min-h-full flex flex-col items-center">
+                {Mode == true ? (
+                    <div className="w-full h-full flex justify-center items-center absolute">
+                        <form className="scala flex flex-col justify-center items-center shadow-Page border-black border-[1px] bg-[#FFFFFF] text-black rounded-[8px] w-[40%] h-32" onSubmit={(e) => {setMode(false); ATTPrice(Att, setAtt)}}>
+                            <label className="block mb-1">Gasto</label>
+                            <input type="number" step="0.01" className="w-[85%] h-8 rounded-[3px] bg-[#EFEDED] mb-5" value={Att} onChange={(e) => setAtt(Number(e.target.value))}  />
+                            <button className="cursor-pointer bg-[#88D752] mx-auto text-white w-26 rounded-[3px] hover:bg-[#5f963b]">Pedir</button>
+                        </form>
+                    </div>
+                ) : (
+                    <>
+                    </>
+                )}
                 <h1 className="shadow-text text-white text-4xl mt-10">ESTOQUE</h1>
                 <div className="scala shadow-Page border-black border-[1px] bg-[#FFFFFF] text-black rounded-[8px] w-[30%] h-76 mb-5">
                     <form className="flex flex-col w-full h-full mt-4 ml-5" onSubmit={(e) => { e.preventDefault(); InsertEstoque(Item, Gasto, Amount, setItem, setGasto, setAmount, setEstoquefeito) }}>
@@ -55,7 +69,7 @@ export default function Estoque() {
                                 <h1 className="text-xl">Quantidade</h1>
                                 <p>{guardado.amount}</p>
                                 <div className="w-full flex justify-between mt-2">
-                                    <button className="cursor-pointer">
+                                    <button onClick={(e) => setMode(true)} className="cursor-pointer">
                                         <FontAwesomeIcon className="text-2xl text-yellow-500 mt-15 hover:text-yellow-700" icon={faPenToSquare}></FontAwesomeIcon>
                                     </button>
                                 </div>

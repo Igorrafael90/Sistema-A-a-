@@ -106,3 +106,9 @@ export const InsertEstoque = (
     setAmount(0)
 }
 
+export const ATTPrice = (Att: number, setAtt: unknown
+
+) => {
+
+}
+
