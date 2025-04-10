@@ -15,23 +15,23 @@ export default function Requests() {
 
     return (
         <>
-            <nav className="flex items-center justify-between w-full bg-[#88D752] ">
+            <nav className="dark:bg-[#A966D6] flex items-center justify-between w-full bg-[#88D752] ">
                 <button className="cursor-pointer" onClick={(e) => Theme(settheme)}>
                     <FontAwesomeIcon className="text-white text-2xl" icon={theme === "light" ? faMoon : faSun} />
                 </button>
                 <h1 className="text-2xl ml-24 text-white">AÇAÍ</h1>
                 <div className="flex space-x-1">
                     <Link className="" href={'/Estoque/'}>
-                        <button className="bg-[#A966D6] text-white w-16 rounded-[3px] cursor-pointer hover:bg-[#8a53ae]">Estoque</button>
+                        <button className="dark:bg-[#88D752] bg-[#A966D6] text-white w-16 rounded-[3px] cursor-pointer hover:bg-[#8a53ae]">Estoque</button>
                     </Link>
                     <Link className="" href={'/Lucro/'}>
-                        <button className="bg-[#A966D6] text-white w-16 rounded-[3px] cursor-pointer hover:bg-[#8a53ae]">Lucros</button>
+                        <button className="dark:bg-[#88D752] bg-[#A966D6] text-white w-16 rounded-[3px] cursor-pointer hover:bg-[#8a53ae]">Lucros</button>
                     </Link>
                 </div>
             </nav>
             <main className="dark:bg-linear-to-bl from-[#000000] to-[#474747] w-full h-auto min-h-full flex flex-col items-center">
                 <h1 className="shadow-text text-white text-4xl mt-10">PEDIDOS</h1>
-                <div className="scala shadow-Page border-black border-[1px] bg-[#FFFFFF] text-black rounded-[8px] w-[30%] h-76 mb-5">
+                <div className="dark:shadow-Dark scala shadow-Page border-black border-[1px] bg-[#FFFFFF] text-black rounded-[8px] w-[30%] h-76 mb-5">
                     <form className="flex flex-col w-full h-full mt-4 ml-5" onSubmit={(e) => { e.preventDefault(); RequestProduct(Order, Local, NameCl, setPedidosFeitos, setOrder, setLocal, setNameCl) }}>
                         <label className="block mb-1">Pedido</label>
                         <input className="w-[85%] h-8 rounded-[3px] bg-[#EFEDED] mb-5" value={Order} onChange={(e) => setOrder(e.target.value)} list="Pedidos" />
@@ -44,11 +44,11 @@ export default function Requests() {
                         <input className="w-[85%] h-8 rounded-[3px] bg-[#EFEDED] mb-5" value={Local} onChange={(e) => setLocal(e.target.value)} />
                         <label className="block mb-1">Cliente</label>
                         <input className="w-[85%] h-8 rounded-[3px] bg-[#EFEDED] mb-5" value={NameCl} onChange={(e) => setNameCl(e.target.value)} />
-                        <button className="cursor-pointer bg-[#88D752] text-white w-26 rounded-[3px] mx-auto hover:bg-[#5f963b]">Pedir</button>
+                        <button className="dark:bg-[#A966D6] dark:hover:bg-[#8725c9] cursor-pointer bg-[#88D752] text-white w-26 rounded-[3px] mx-auto hover:bg-[#5f963b]">Pedir</button>
                     </form>
                 </div>
 
-                <div className="scala bg-white w-[90%] border-black border h-auto rounded-lg shadow-Page grid grid-cols-4 p-3">
+                <div className="dark:shadow-Dark scala bg-white w-[90%] border-black border h-auto rounded-lg shadow-Page grid grid-cols-4 p-3">
                     {PedidosFeitos.length == 0 ? (
                         <p>Sem pedidos</p>
                     ) : (

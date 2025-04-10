@@ -39,6 +39,16 @@ export const RegisterUser = (
     return novoUsuario
 }
 
+export const LoginUser = (
+    User: string,
+    Senha: string,
+) => {
+    if (!User || !Senha) {
+        alert('Preencha todos os campos');
+        return null;
+    }
+}
+
 export const RequestProduct = (
     Order: string,
     Local: string,

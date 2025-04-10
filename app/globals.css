@@ -5,6 +5,7 @@
 @theme {
   --shadow-Page: -9px 10px 2px  #93D666;
   --shadow-Page2: -8px 9px 4px  #B09F9F;
+  --shadow-Dark: -9px 10px 2px #8866D6;
 }
 
 body {
@@ -18,7 +19,6 @@ body {
   text-shadow: 4px 4px 10px #000000;
 }
 .CircleLR {
-  background-color: #88D752;
   border-radius: 3px;
   width: 35%;
 }
