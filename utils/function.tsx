@@ -1,4 +1,5 @@
-import { Cadastrado, Description, PedidoEstoque, PedidoFeito } from "./interface";
+import { SetStateAction } from "react";
+import { Cadastrado, PedidoEstoque, PedidoFeito } from "./interface";
 
 export const RegisterUser = (
     User: string,
@@ -53,20 +54,18 @@ export const RequestProduct = (
     Order: string,
     Local: string,
     NameCl: string,
+    Price: number,
     setPedidosFeitos: React.Dispatch<React.SetStateAction<PedidoFeito[]>>,
     setOrder: React.Dispatch<React.SetStateAction<string>>,
     setLocal: React.Dispatch<React.SetStateAction<string>>,
-    setNameCl: React.Dispatch<React.SetStateAction<string>>
+    setNameCl: React.Dispatch<React.SetStateAction<string>>,
+    setPrice: React.Dispatch<React.SetStateAction<number>>
 ) => {
-
-    const itemSelecionado = Description.find(item => item.nome === Order)
-
-    if (itemSelecionado) {
         const novoPedido: PedidoFeito = {
             pedido: Order,
             endereco: Local,
             cliente: NameCl,
-            preco: itemSelecionado.preço
+            preco: Price
         }
 
         setPedidosFeitos(prev => [...prev, novoPedido])
@@ -74,8 +73,8 @@ export const RequestProduct = (
         setOrder('')
         setLocal('')
         setNameCl('')
+        setPrice(0.0)
     }
-}
 
 export const Theme = (
     settheme: React.Dispatch<React.SetStateAction<"light" | "dark">>
@@ -107,6 +106,7 @@ export const InsertEstoque = (
         item: Item,
         gasto: Gasto,
         amount: Amount,
+        id: Date.now()
     }
     
     setEstoquefeito(prev => [...prev, novopedidoestoque])
@@ -116,9 +116,14 @@ export const InsertEstoque = (
     setAmount(0)
 }
 
-export const ATTPrice = (Att: number, setAtt: unknown
-
+export const ATTPrice = (
+    id:number,
+    Att: number,
+    setEstoquefeito: React.Dispatch<React.SetStateAction<PedidoEstoque[]>>
 ) => {
+    setEstoquefeito((prev) => 
+    prev.map((item) => 
+        item.id === id ? { ...item, gasto: Att} : item))
 
 }
 

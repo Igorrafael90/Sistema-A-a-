@@ -32,15 +32,15 @@ export default function Home() {
         </div>
         <div className={`dark:shadow-Dark shadow-Page border-black border-[1px] bg-[#FFFFFF] text-black rounded-[8px] w-60 h-96 ${Mode == true ? 'max-h-64 scalaReverse' : 'scala'}`}>
           {Mode == true ? (
-            <form className="flex flex-col w-full h-full mt-4 ml-5" action="">
+            <form className="flex flex-col w-full h-full mt-4 ml-5" onSubmit={(e) => {e.preventDefault(); LoginUser(User,Senha)}}>
               <label className="block mb-2">Usuario</label>
               <input className="w-[85%] h-8 rounded-[3px] bg-[#d8d8d8] mb-5" value={User} onChange={(e) => setUser(e.target.value)} placeholder="Digite seu Usuario" type="email" />
               <label className="block mb-2">Senha</label>
               <input className="w-[85%] h-8 rounded-[3px] bg-[#d8d8d8]" value={Senha} onChange={(e) => setSenha(e.target.value)} placeholder="Digite sua senha" type="password" />
-              <button onClick={(e) => {e.preventDefault(); LoginUser(User,Senha)}} className="dark:bg-[#A966D6] dark:hover:bg-[#8725c9] bg-[#88D752] text-white w-26 rounded-[3px] mx-13 mt-2 cursor-pointer hover:bg-[#5f963b]">LOGAR</button>
+              <button type="submit" className="dark:bg-[#A966D6] dark:hover:bg-[#8725c9] bg-[#88D752] text-white w-26 rounded-[3px] mx-13 mt-2 cursor-pointer hover:bg-[#5f963b]">LOGAR</button>
             </form>
           ) : (
-            <form className="flex flex-col w-full h-full mt-4 ml-5" action="">
+            <form className="flex flex-col w-full h-full mt-4 ml-5" onSubmit={(e) => { e.preventDefault(); RegisterUser(User, Userconf, Senha, Senhaconf) }}>
               <label className="block mb-2">Usuario</label>
               <input className="w-[85%] h-8 rounded-[3px] bg-[#d8d8d8] mb-5" value={User} onChange={(e) => setUser(e.target.value)} placeholder="Digite um Usuario" type="email" required />
               <label className="block mb-2">Confirme Usuario</label>
@@ -49,7 +49,7 @@ export default function Home() {
               <input className="w-[85%] h-8 rounded-[3px] bg-[#d8d8d8] mb-5" value={Senha} onChange={(e) => setSenha(e.target.value)} placeholder="Digite uma senha" type="password" required />
               <label className="block mb-2">Confirme Senha</label>
               <input className="w-[85%] h-8 rounded-[3px] bg-[#d8d8d8]" value={Senhaconf} onChange={(e) => setSenhaconf(e.target.value)} placeholder="Confirme a senha" type="password" required />
-              <button onClick={(e) => { e.preventDefault();/*Evita recarregamento da página*/ RegisterUser(User, Userconf, Senha, Senhaconf) }} className="dark:bg-[#A966D6] dark:hover:bg-[#8725c9] bg-[#88D752] w-26 rounded-[3px] text-white mx-13 mt-2 cursor-pointer hover:bg-[#5f963b]">CADASTRAR</button>
+              <button type="submit" className="dark:bg-[#A966D6] dark:hover:bg-[#8725c9] bg-[#88D752] w-26 rounded-[3px] text-white mx-13 mt-2 cursor-pointer hover:bg-[#5f963b]">CADASTRAR</button>
             </form>
           )}
         </div>
