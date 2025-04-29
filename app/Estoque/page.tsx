@@ -17,27 +17,27 @@ export default function Estoque() {
     const [theme, settheme] = useState<"light" | "dark">("light")
     return (
         <>
-            <nav className="dark:bg-[#A966D6] flex items-center justify-between w-full bg-[#88D752] ">
+            <header className="dark:bg-[#A966D6] flex items-center justify-between w-full bg-[#88D752] ">
                 <button className="cursor-pointer" onClick={(e) => Theme(settheme)}>
                     <FontAwesomeIcon className="text-white text-2xl" icon={theme === "light" ? faMoon : faSun} />
                 </button>
                 <h1 className="text-2xl ml-24 text-white">AÇAÍ</h1>
                 <div className="flex space-x-1">
                     <Link className="" href={'/Requests/'}>
-                        <button className="dark:bg-[#88D752] bg-[#A966D6] text-white w-16 rounded-[3px] cursor-pointer hover:bg-[#8a53ae]">Estoque</button>
+                        <button className="dark:bg-[#88D752] bg-[#A966D6] text-white w-16 rounded-[3px] cursor-pointer hover:bg-[#8a53ae]">Pedidos</button>
                     </Link>
                     <Link className="" href={'/Lucro/'}>
                         <button className="dark:bg-[#88D752] bg-[#A966D6] text-white w-16 rounded-[3px] cursor-pointer hover:bg-[#8a53ae]">Lucros</button>
                     </Link>
                 </div>
-            </nav>
+            </header>
             <main className="dark:bg-linear-to-bl from-[#000000] to-[#474747] w-full h-auto min-h-full flex flex-col items-center">
                 {Mode == true ? (
                     <div className="w-full h-full flex justify-center items-center absolute">
                         <form className="dark:shadow-Dark scala flex flex-col justify-center items-center shadow-Page border-black border-[1px] bg-[#FFFFFF] text-black rounded-[8px] w-[40%] h-32" onSubmit={(e) => {setMode(false); ATTPrice(Att, setAtt)}}>
                             <label className="block mb-1">Gasto</label>
-                            <input type="number" step="0.01" className="w-[85%] h-8 rounded-[3px] bg-[#EFEDED] mb-5" value={Att} onChange={(e) => setAtt(Number(e.target.value))}  />
-                            <button className="dark:bg-[#A966D6] dark:hover:bg-[#8725c9] cursor-pointer bg-[#88D752] mx-auto text-white w-26 rounded-[3px] hover:bg-[#5f963b]">Pedir</button>
+                            <input type="number" step="0.01" className="w-[85%] h-8 rounded-[3px] bg-[#d8d8d8] mb-5" value={Att} onChange={(e) => setAtt(Number(e.target.value))}  />
+                            <button className="dark:bg-[#7a797a] dark:hover:bg-[#8725c9] cursor-pointer bg-[#88D752] mx-auto text-white w-26 rounded-[3px] hover:bg-[#5f963b]">Pedir</button>
                         </form>
                     </div>
                 ) : (
@@ -48,12 +48,12 @@ export default function Estoque() {
                 <div className="dark:shadow-Dark scala shadow-Page border-black border-[1px] bg-[#FFFFFF] text-black rounded-[8px] w-[30%] h-76 mb-5">
                     <form className="flex flex-col w-full h-full mt-4 ml-5" onSubmit={(e) => { e.preventDefault(); InsertEstoque(Item, Gasto, Amount, setItem, setGasto, setAmount, setEstoquefeito) }}>
                         <label className="block mb-1">Item</label>
-                        <input className="w-[85%] h-8 rounded-[3px] bg-[#EFEDED] mb-5" value={Item} onChange={(e) => setItem(e.target.value)} />
+                        <input className="w-[85%] h-8 rounded-[3px] bg-[#d8d8d8] mb-5" value={Item} onChange={(e) => setItem(e.target.value)} />
                         <label className="block mb-1">Gasto</label>
-                        <input type="number" step="0.01" className="w-[85%] h-8 rounded-[3px] bg-[#EFEDED] mb-5" value={Gasto} onChange={(e) => setGasto(Number(e.target.value))} />
+                        <input type="number" step="0.01" className="w-[85%] h-8 rounded-[3px] bg-[#d8d8d8] mb-5" value={Gasto} onChange={(e) => setGasto(Number(e.target.value))} />
                         <label className="block mb-1">Quantidade</label>
-                        <input className="w-[85%] h-8 rounded-[3px] bg-[#EFEDED] mb-5" value={Amount} onChange={(e) => setAmount(Number(e.target.value))} />
-                        <button className="dark:bg-[#A966D6] dark:hover:bg-[#8725c9] cursor-pointer bg-[#88D752] mx-auto text-white w-26 rounded-[3px] hover:bg-[#5f963b]">Pedir</button>
+                        <input className="w-[85%] h-8 rounded-[3px] bg-[#d8d8d8] mb-5" value={Amount} onChange={(e) => setAmount(Number(e.target.value))} />
+                        <button className="dark:bg-[#A966D6] dark:hover:bg-[#8725c9] cursor-pointer bg-[#88D752] text-white w-26 rounded-[3px] hover:bg-[#5f963b]">Pedir</button>
                     </form>
                 </div>
                 <div className="dark:shadow-Dark scala bg-white w-[90%] border-black border h-auto rounded-lg shadow-Page grid grid-cols-4 p-3">
